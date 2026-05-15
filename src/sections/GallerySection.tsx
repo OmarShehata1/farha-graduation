@@ -6,21 +6,21 @@ import { motion, useInView } from 'framer-motion'
 // Placeholder image data — replace with real photos
 const galleryItems = [
   {
-    src: 'images/f1.jpeg',
+    src: 'images/farha.jpeg',
     caption: 'the beginning',
     date: 'Sept 2022',
     rotate: '-3deg',
     delay: 0,
   },
   {
-    src: 'images/f2.jpeg',
+    src: 'images/f5.jpeg',
     caption: 'golden hour study',
     date: 'Nov 2022',
     rotate: '2.5deg',
     delay: 0.1,
   },
   {
-    src: 'images/f3.jpeg',
+    src: 'images/farha2.jpeg',
     caption: 'words & pages',
     date: 'Feb 2023',
     rotate: '-1.5deg',
@@ -34,7 +34,7 @@ const galleryItems = [
     delay: 0.15,
   },
   {
-    src: 'images/f5.jpeg',
+    src: 'images/f2.jpeg',
     caption: 'behind the lens',
     date: 'Mar 2024',
     rotate: '-2deg',
