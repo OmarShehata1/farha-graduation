@@ -149,7 +149,7 @@ if (isPlaying) {
 
 ### 3. Add real photos
 
-Replace the Unsplash URLs in `src/sections/GallerySection.tsx`:
+Replace the URLs in `src/sections/GallerySection.tsx`:
 
 ```tsx
 const galleryItems = [
