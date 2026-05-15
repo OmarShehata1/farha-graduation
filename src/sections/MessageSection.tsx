@@ -16,8 +16,8 @@ const messageLines = [
   { text: 'And I wish you could see yourself', pause: 800 },
   { text: 'the way I do.', pause: 1500 },
   { text: '', pause: 400 },
-  { text: 'Because from where I\'m standing...', pause: 900 },
-  { text: 'you\'ve always been extraordinary.', pause: 2000 },
+  { text: "Because from where I'm standing...", pause: 900 },
+  { text: "you've always been extraordinary.", pause: 2000 },
 ]
 
 function TypewriterLine({ text, onComplete }: { text: string; onComplete: () => void }) {
@@ -111,7 +111,7 @@ export default function MessageSection() {
         className="absolute top-20 left-8 md:left-20 font-display text-[16rem] leading-none text-coffee/4 pointer-events-none select-none"
         aria-hidden
       >
-        "
+       {'"'}
       </div>
 
       <div ref={sectionRef} className="relative z-10 max-w-xl mx-auto w-full">

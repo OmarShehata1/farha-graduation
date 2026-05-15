@@ -333,8 +333,8 @@ export default function VoiceSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 1 }}
           >
-            There's a voice note waiting for you. <br />
-            Something I couldn't put into words.
+            {"There's a voice note waiting for you. "}<br />
+           {"Something I couldn't put into words."}
           </motion.p>
 
           {/* CTA Button */}
@@ -393,7 +393,7 @@ export default function VoiceSection() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 1, duration: 1 }}
           >
-            press play when you're ready ♡
+            {"press play when you're ready ♡"}
           </motion.p>
         </div>
 

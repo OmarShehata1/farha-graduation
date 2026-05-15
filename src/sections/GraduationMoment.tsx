@@ -134,7 +134,7 @@ export default function GraduationMoment() {
         {/* Emotional tagline */}
         <div className="space-y-3">
           {[
-            'You didn\'t just graduate...',
+            "You didn't just graduate...",
             'you became a story worth telling.',
           ].map((line, i) => (
             <motion.p
@@ -163,7 +163,7 @@ export default function GraduationMoment() {
           whileHover={{ y: -3 }}
         >
           <span className="font-accent text-[11px] tracking-[0.3em] uppercase text-beige/40 group-hover:text-beige/70 transition-colors">
-            there's one more thing
+            {"there's one more thing"}
           </span>
           <motion.div
             className="w-1 h-1 rounded-full bg-beige/40"
