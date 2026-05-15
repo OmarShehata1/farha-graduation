@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables ─── */
+:root {
+  --coffee: #6F4E37;
+  --coffee-light: #8B6347;
+  --coffee-dark: #4A3425;
+  --coffee-deeper: #2C1F15;
+  --beige: #F5E6D3;
+  --beige-light: #FAF0E6;
+  --cream: #FFF8F0;
+  --soft-black: #1E1E1E;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-accent: 'Outfit', sans-serif;
+}
+
+/* ─── Base Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--soft-black);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor — custom one used */
+*, *:hover {
+  cursor: none !important;
+}
+
+/* ─── Custom Cursor ─── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--coffee);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.2s ease;
+  mix-blend-mode: multiply;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--coffee);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+  opacity: 0.5;
+}
+
+.cursor-ring.hovered {
+  width: 56px;
+  height: 56px;
+  opacity: 0.3;
+  background: rgba(111, 78, 55, 0.05);
+}
+
+/* ─── Grain Texture Overlay ─── */
+.grain-overlay {
+  position: fixed;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.035;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--coffee), var(--coffee-light));
+  z-index: 9997;
+  transform-origin: left;
+  transition: width 0.1s linear;
+}
+
+/* ─── Loading Screen ─── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--coffee-deeper);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* ─── Section Transitions ─── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Glass Card ─── */
+.glass-card {
+  background: rgba(255, 248, 240, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(111, 78, 55, 0.08);
+  box-shadow: 0 8px 32px rgba(111, 78, 55, 0.06),
+              0 2px 8px rgba(111, 78, 55, 0.04);
+}
+
+/* ─── Polaroid Card ─── */
+.polaroid {
+  background: #fffef9;
+  box-shadow: 0 4px 20px rgba(111, 78, 55, 0.15),
+              0 1px 4px rgba(111, 78, 55, 0.1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+}
+
+.polaroid:hover {
+  box-shadow: 0 20px 60px rgba(111, 78, 55, 0.25),
+              0 4px 16px rgba(111, 78, 55, 0.12);
+}
+
+/* ─── Smooth Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(111, 78, 55, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(111, 78, 55, 0.5);
+}
+
+/* ─── Typography Utilities ─── */
+.font-display { font-family: var(--font-display); }
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.font-accent { font-family: var(--font-accent); }
+
+/* ─── Cinematic Vignette ─── */
+.vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(44, 31, 21, 0.5) 100%);
+}
+
+/* ─── Modal Backdrop ─── */
+.modal-backdrop {
+  background: rgba(28, 20, 14, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ─── Waveform bars ─── */
+.wave-bar {
+  display: inline-block;
+  width: 3px;
+  background: var(--coffee-light);
+  border-radius: 2px;
+  transform-origin: bottom;
+}
+
+/* ─── Floating ambient particles ─── */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111, 78, 55, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: float var(--duration, 8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+  33% { transform: translateY(-30px) translateX(15px) rotate(3deg); }
+  66% { transform: translateY(-15px) translateX(-10px) rotate(-2deg); }
+}
+
+/* ─── Text gradient ─── */
+.text-coffee-gradient {
+  background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee) 50%, var(--coffee-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Responsive fluid type ─── */
+.text-fluid-hero {
+  font-size: clamp(2.2rem, 6vw, 5.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-fluid-title {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  line-height: 1.15;
+}
+
+.text-fluid-subtitle {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  line-height: 1.6;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(111, 78, 55, 0.2);
+  color: var(--coffee-dark);
+}

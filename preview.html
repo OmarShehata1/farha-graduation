@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Farha Tarek · Class of 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --coffee: #6F4E37;
+  --coffee-light: #8B6347;
+  --coffee-dark: #4A3425;
+  --coffee-deeper: #2C1F15;
+  --beige: #F5E6D3;
+  --beige-light: #FAF0E6;
+  --cream: #FFF8F0;
+  --soft-black: #1E1E1E;
+}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--cream);
+  color: var(--soft-black);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+*, *:hover { cursor: none !important; }
+::selection { background: rgba(111,78,55,0.15); color: var(--coffee-dark); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: rgba(111,78,55,0.25); border-radius: 4px; }
+
+/* ── Custom Cursor ── */
+#cursor-dot {
+  width: 8px; height: 8px;
+  background: var(--coffee);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(111,78,55,0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s, opacity 0.25s, background 0.25s;
+  will-change: transform;
+}
+#cursor-ring.big {
+  width: 54px; height: 54px;
+  background: rgba(111,78,55,0.04);
+  opacity: 0.4;
+}
+
+/* ── Grain ── */
+.grain-overlay {
+  position: fixed; inset: -200%; width: 400%; height: 400%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9990; opacity: 0.03;
+  animation: grain 8s steps(10) infinite;
+}
+@keyframes grain {
+  0%,100% { transform:translate(0,0) }
+  10% { transform:translate(-5%,-10%) }
+  20% { transform:translate(-15%,5%) }
+  30% { transform:translate(7%,-25%) }
+  40% { transform:translate(-5%,25%) }
+  50% { transform:translate(-15%,10%) }
+  60% { transform:translate(15%,0%) }
+  70% { transform:translate(0%,15%) }
+  80% { transform:translate(3%,35%) }
+  90% { transform:translate(-10%,10%) }
+}
+
+/* ── Scroll Progress ── */
+#scroll-bar {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--coffee), var(--coffee-light));
+  z-index: 9997;
+  transition: width 0.08s linear;
+}
+
+/* ── Loading Screen ── */
+#loading {
+  position: fixed; inset: 0;
+  background: var(--coffee-deeper);
+  z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#loading.fade-out { opacity: 0; visibility: hidden; }
+.loading-inner { text-align: center; animation: fadeUp 1s ease forwards; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+.loading-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 14vw, 8rem);
+  color: var(--beige);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.loading-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(245,230,211,0.35);
+  margin-bottom: 1.5rem;
+}
+.loading-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(245,230,211,0.3);
+  margin-top: 1.2rem;
+}
+.loading-bar-wrap {
+  width: 120px; height: 1px;
+  background: rgba(111,78,55,0.2);
+  margin: 2rem auto 0;
+  overflow: hidden;
+  border-radius: 1px;
+}
+.loading-bar-fill {
+  height: 100%;
+  background: rgba(245,230,211,0.4);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.loading-divider {
+  width: 0px; height: 1px;
+  background: rgba(111,78,55,0.3);
+  margin: 1.2rem auto;
+  transition: width 0.8s 0.8s ease;
+}
+
+/* ── Reveal animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.on { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-left.on { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-right.on { opacity: 1; transform: translateX(0); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse at 60% 40%, #F5E6D3 0%, #FFF8F0 55%, #FAF0E6 100%);
+}
+.hero-top-label {
+  position: absolute; top: 2.5rem; left: 2.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(111,78,55,0.4);
+  opacity: 0; animation: fadeUp 1s 0.3s ease forwards;
+}
+.hero-nav-dots {
+  position: absolute; top: 2.5rem; right: 2.5rem;
+  display: flex; flex-direction: column; gap: 8px; align-items: center;
+  opacity: 0; animation: fadeIn 1s 2s ease forwards;
+}
+.hero-nav-dots a { display: block; width: 6px; height: 6px; border-radius: 50%; background: rgba(111,78,55,0.25); transition: background 0.2s, transform 0.2s; }
+.hero-nav-dots a:hover { background: rgba(111,78,55,0.7); transform: scale(1.5); }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.hero-content { position: relative; z-index: 2; text-align: center; padding: 1.5rem; max-width: 900px; }
+.hero-eyebrow {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 1s 0.1s ease forwards;
+}
+.eyebrow-line { height: 1px; width: 40px; background: rgba(111,78,55,0.3); }
+.eyebrow-text {
+  font-family: 'Outfit', sans-serif; font-size: 10px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(111,78,55,0.5);
+}
+.hero-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6.5vw, 5.5rem);
+  line-height: 1.08; letter-spacing: -0.015em;
+  color: var(--soft-black);
+  margin-bottom: 2rem;
+}
+.hero-headline .line { display: block; overflow: hidden; }
+.hero-headline .line span {
+  display: block;
+  opacity: 0; transform: translateY(100%);
+  animation: slideUp 1s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-headline .line:nth-child(1) span { animation-delay: 0.2s; }
+.hero-headline .line:nth-child(2) span { animation-delay: 0.42s; }
+.hero-headline .line:nth-child(3) span { animation-delay: 0.6s; }
+.hero-headline .line:nth-child(4) span { animation-delay: 0.78s; font-style:italic; }
+@keyframes slideUp { to { opacity:1; transform:translateY(0); } }
+.text-gradient {
+  background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee) 50%, var(--coffee-light) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-family: 'Poppins', sans-serif; font-size: 13px; color: rgba(30,30,30,0.35);
+  letter-spacing: 0.05em;
+  opacity: 0; animation: fadeUp 1s 1.4s ease forwards;
+}
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  opacity: 0; animation: fadeIn 1s 2.2s ease forwards;
+}
+.hero-scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(180deg, transparent, rgba(111,78,55,0.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+}
+.hero-scroll-label {
+  font-family: 'Outfit', sans-serif; font-size: 9px;
+  letter-spacing: 0.35em; text-transform: uppercase; color: rgba(111,78,55,0.3);
+}
+/* Floating particles */
+.particle {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(111,78,55,0.1) 0%, transparent 70%);
+  pointer-events: none; animation: floatP var(--dur, 8s) ease-in-out infinite;
+  animation-delay: var(--del, 0s);
+}
+@keyframes floatP {
+  0%,100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-28px) translateX(12px); }
+  66% { transform: translateY(-14px) translateX(-8px); }
+}
+
+/* ── JOURNEY ── */
+#journey {
+  padding: 8rem 1.5rem;
+  background: linear-gradient(180deg, #FFF8F0 0%, #F5E6D3 100%);
+  position: relative;
+}
+.section-label {
+  font-family: 'Outfit', sans-serif; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(111,78,55,0.4); margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--soft-black); font-style: italic;
+  line-height: 1.1;
+}
+.section-header { text-align: center; margin-bottom: 5rem; }
+.section-divider {
+  height: 1px; width: 100px; margin: 1.5rem auto 0;
+  background: linear-gradient(90deg, transparent, rgba(111,78,55,0.2), transparent);
+}
+.timeline-wrap { max-width: 700px; margin: 0 auto; position: relative; }
+.timeline-line {
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent 0%, rgba(111,78,55,0.15) 15%, rgba(111,78,55,0.15) 85%, transparent 100%);
+}
+.timeline-item {
+  display: flex; align-items: center; gap: 2rem;
+  margin-bottom: 3.5rem; position: relative;
+}
+.timeline-item:nth-child(even) { flex-direction: row-reverse; }
+.t-card {
+  flex: 1;
+  background: rgba(255,248,240,0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(111,78,55,0.07);
+  box-shadow: 0 8px 32px rgba(111,78,55,0.06), 0 2px 8px rgba(111,78,55,0.04);
+  border-radius: 20px;
+  padding: 1.8rem 2rem;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+}
+.t-card:hover {
+  transform: translateY(-6px) rotate(0deg) !important;
+  box-shadow: 0 20px 48px rgba(111,78,55,0.14), 0 4px 16px rgba(111,78,55,0.08);
+}
+.t-card-1 { transform: rotate(-1.5deg); }
+.t-card-2 { transform: rotate(1.2deg); }
+.t-card-3 { transform: rotate(-0.8deg); }
+.t-card-4 { transform: rotate(2deg); }
+.t-card-5 { transform: rotate(-1deg); }
+.t-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 999px;
+  background: rgba(111,78,55,0.08);
+  font-family: 'Outfit', sans-serif; font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--coffee);
+  margin-bottom: 1rem;
+}
+.t-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-style: italic;
+  color: var(--soft-black); margin-bottom: 0.25rem;
+}
+.t-sub {
+  font-family: 'Outfit', sans-serif; font-size: 9px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(111,78,55,0.45); margin-bottom: 0.9rem;
+}
+.t-desc { font-family: 'Poppins', sans-serif; font-size: 12.5px; color: rgba(30,30,30,0.5); line-height: 1.7; }
+.t-node { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
+.t-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--beige); border: 2px solid rgba(111,78,55,0.35);
+  position: relative; z-index: 1;
+}
+.t-dot.final { background: var(--coffee); border-color: var(--coffee); box-shadow: 0 0 14px rgba(111,78,55,0.4); animation: dotPulse 2s ease-in-out infinite; }
+@keyframes dotPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
+
+/* ── MESSAGE ── */
+#message {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 8rem 1.5rem;
+  background: #FFF8F0; position: relative; overflow: hidden;
+}
+.big-quote {
+  position: absolute; top: 1rem; left: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18rem; line-height: 1;
+  color: rgba(111,78,55,0.035); pointer-events: none; user-select: none;
+}
+.msg-wrap { max-width: 540px; width: 100%; position: relative; z-index: 2; }
+.msg-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 3rem; }
+.msg-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: rgba(30,30,30,0.8); line-height: 1.55;
+  min-height: 1.6em;
+}
+.msg-line.emphasis { color: var(--coffee); font-weight: 500; }
+.msg-line.italic-em { font-style: italic; color: var(--coffee); }
+.msg-gap { height: 1.4rem; }
+.cursor-blink {
+  display: inline-block; width: 2px; height: 1em;
+  background: rgba(111,78,55,0.6); margin-left: 2px;
+  vertical-align: middle; border-radius: 1px;
+  animation: blink 0.85s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.msg-signature { margin-top: 3.5rem; opacity: 0; transition: opacity 1s; }
+.msg-signature.show { opacity: 1; }
+.sig-line { height: 1px; width: 48px; background: rgba(111,78,55,0.2); margin-bottom: 1rem; }
+.sig-with { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(111,78,55,0.55); }
+.sig-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--coffee); margin-top: 0.2rem; }
+
+/* ── GALLERY ── */
+#gallery {
+  padding: 8rem 1.5rem;
+  background: linear-gradient(180deg, #F5E6D3 0%, #FFF8F0 50%, #F5E6D3 100%);
+  position: relative; overflow: hidden;
+}
+.gallery-grid {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 2.5rem;
+  max-width: 1000px; margin: 0 auto;
+  padding: 2rem 0;
+}
+.polaroid {
+  background: #fffef9;
+  padding: 10px 10px 36px;
+  box-shadow: 0 6px 24px rgba(111,78,55,0.14), 0 2px 6px rgba(111,78,55,0.08);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  width: 200px; flex-shrink: 0; position: relative;
+}
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-14px) scale(1.04) !important;
+  box-shadow: 0 24px 60px rgba(111,78,55,0.24), 0 6px 20px rgba(111,78,55,0.12);
+  z-index: 10;
+}
+.pol-img-wrap { position: relative; overflow: hidden; aspect-ratio: 1/1.05; }
+.pol-img-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.15);
+}
+.pol-img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) sepia(0.1); transition: filter 0.4s; }
+.polaroid:hover .pol-img { filter: saturate(1.1) contrast(1.02); }
+.pol-grain {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+.pol-caption {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 13px; color: rgba(30,30,30,0.55); text-align: center;
+  margin-top: 8px; line-height: 1.3;
+}
+.pol-date {
+  font-family: 'Outfit', sans-serif; font-size: 8px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(111,78,55,0.3); text-align: center; margin-top: 3px;
+}
+.pol-1 { transform: rotate(-3deg); }
+.pol-2 { transform: rotate(2.5deg); }
+.pol-3 { transform: rotate(-1.5deg); }
+.pol-4 { transform: rotate(3deg); }
+.pol-5 { transform: rotate(-2deg); }
+.pol-6 { transform: rotate(1.5deg); }
+.gallery-footer { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(111,78,55,0.3); font-size: 14px; margin-top: 4rem; }
+
+/* ── GRADUATION MOMENT ── */
+#moment {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #2C1F15 0%, #4A3425 35%, #6F4E37 65%, #4A3425 100%);
+}
+.vignette-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(20,12,8,0.7) 100%);
+}
+.sparkle {
+  position: absolute; color: rgba(245,230,211,0.15); font-size: 12px;
+  pointer-events: none; animation: sparkleFloat var(--dur,5s) ease-in-out infinite;
+  animation-delay: var(--del,0s);
+}
+@keyframes sparkleFloat {
+  0%,100%{transform:translateY(0); opacity:0.1}
+  50%{transform:translateY(-20px); opacity:0.4}
+}
+.moment-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 800px; }
+.moment-faculty {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 2.5rem;
+  font-family: 'Outfit', sans-serif; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(245,230,211,0.35);
+}
+.moment-fac-line { height: 1px; width: 40px; background: rgba(245,230,211,0.2); }
+.moment-name {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(3rem, 10vw, 8rem);
+  color: var(--beige); line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 80px rgba(245,230,211,0.12);
+}
+.moment-class {
+  font-family: 'Outfit', sans-serif; font-size: 11px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(245,230,211,0.35); margin: 1.5rem 0 3.5rem;
+}
+.moment-divider {
+  height: 1px; width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245,230,211,0.2), transparent);
+  margin-bottom: 3rem;
+}
+.moment-line1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: rgba(245,230,211,0.45); margin-bottom: 0.6rem;
+}
+.moment-line2 {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+  color: var(--beige);
+}
+.moment-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 4rem; text-decoration: none;
+  font-family: 'Outfit', sans-serif; font-size: 10px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(245,230,211,0.35);
+  transition: color 0.3s;
+}
+.moment-cta:hover { color: rgba(245,230,211,0.7); }
+.moment-cta-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(245,230,211,0.35);
+  animation: bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── VOICE SECTION ── */
+#voice {
+  padding: 10rem 1.5rem 8rem;
+  display: flex; align-items: center; justify-content: center;
+  background: #FFF8F0; position: relative; overflow: hidden;
+  min-height: 80vh;
+}
+.voice-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 60%, rgba(245,230,211,0.55) 0%, transparent 70%);
+}
+.voice-content { position: relative; z-index: 2; text-align: center; max-width: 440px; }
+.voice-heading {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  color: var(--soft-black); margin-bottom: 0.75rem;
+}
+.voice-sub {
+  font-family: 'Poppins', sans-serif; font-size: 13px;
+  color: rgba(30,30,30,0.38); line-height: 1.7; margin-bottom: 3.5rem;
+}
+.voice-btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 1.15rem 2.5rem; border-radius: 999px; border: none;
+  background: linear-gradient(135deg, #2C1F15, #6F4E37);
+  color: var(--beige); font-family: 'Outfit', sans-serif;
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  box-shadow: 0 8px 40px rgba(111,78,55,0.25);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.voice-btn:hover { transform: translateY(-5px); box-shadow: 0 22px 60px rgba(111,78,55,0.4); }
+.voice-btn-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(245,230,211,0.55);
+  animation: dotPulse2 1.5s ease-in-out infinite;
+}
+@keyframes dotPulse2 { 0%,100%{transform:scale(1); opacity:0.6} 50%{transform:scale(1.4); opacity:1} }
+.voice-hint {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 13px; color: rgba(111,78,55,0.25); margin-top: 1.5rem;
+}
+.voice-footer {
+  position: absolute; bottom: 2rem; left: 0; right: 0; text-align: center;
+  font-family: 'Outfit', sans-serif; font-size: 9px;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(111,78,55,0.18);
+}
+
+/* ── MODAL ── */
+#modal-backdrop {
+  position: fixed; inset: 0; z-index: 9995;
+  background: rgba(28,20,14,0.82);
+  backdrop-filter: blur(10px);
+  display: none; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  transition: opacity 0.4s;
+}
+#modal-backdrop.open { display: flex; }
+.modal-card {
+  width: 100%; max-width: 360px;
+  background: rgba(255,248,240,0.98);
+  border-radius: 28px; overflow: hidden;
+  box-shadow: 0 40px 80px rgba(44,31,21,0.45), 0 10px 30px rgba(44,31,21,0.2);
+  animation: modalIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes modalIn { from{opacity:0; transform:translateY(40px) scale(0.96)} to{opacity:1; transform:translateY(0) scale(1)} }
+.modal-strip { height: 3px; background: linear-gradient(90deg, #6F4E37, #8B6347, #6F4E37); }
+.modal-body { padding: 2rem 1.8rem; }
+.modal-mic {
+  width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 1.2rem;
+  background: rgba(111,78,55,0.07);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.5s ease;
+}
+.modal-mic.playing { animation: micPulse 1.5s ease-in-out infinite; }
+@keyframes micPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+.modal-label {
+  font-family: 'Outfit', sans-serif; font-size: 9px;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(111,78,55,0.4); text-align: center; margin-bottom: 0.4rem;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1.6rem; color: var(--soft-black); text-align: center; margin-bottom: 0.3rem;
+}
+.modal-from {
+  font-family: 'Poppins', sans-serif; font-size: 11px;
+  color: rgba(30,30,30,0.35); text-align: center; margin-bottom: 1.8rem;
+}
+.waveform-box {
+  background: rgba(111,78,55,0.04); border-radius: 16px;
+  padding: 1.2rem 1rem 0.8rem; margin-bottom: 1.2rem;
+}
+.waveform {
+  display: flex; align-items: flex-end; justify-content: center;
+  gap: 3px; height: 36px;
+}
+.w-bar {
+  width: 3px; background: rgba(111,78,55,0.55); border-radius: 2px;
+  height: 4px; transition: height 0.1s;
+}
+.progress-row { margin-top: 0.8rem; }
+.progress-track {
+  height: 2px; background: rgba(111,78,55,0.1); border-radius: 1px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--coffee), var(--coffee-light));
+  border-radius: 1px; transition: width 0.08s linear;
+}
+.time-row { display: flex; justify-content: space-between; margin-top: 6px; }
+.time-label { font-family: 'Outfit', sans-serif; font-size: 9px; color: rgba(111,78,55,0.4); }
+.play-btn {
+  width: 100%; padding: 1rem; border: none; border-radius: 16px;
+  background: linear-gradient(135deg, #4A3425, #6F4E37);
+  color: var(--beige); font-family: 'Outfit', sans-serif;
+  font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative; overflow: hidden;
+}
+.play-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(111,78,55,0.3); }
+.play-btn-glow {
+  position: absolute; inset: 0; border-radius: 16px;
+  background: radial-gradient(circle at 50% 50%, rgba(139,99,71,0.4), transparent 70%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.play-btn.playing .play-btn-glow { opacity: 1; animation: glowPulse 2s ease-in-out infinite; }
+@keyframes glowPulse { 0%,100%{opacity:0.4} 50%{opacity:0.8} }
+.modal-note {
+  text-align: center; font-family: 'Poppins', sans-serif;
+  font-size: 10px; color: rgba(30,30,30,0.22); margin-top: 1rem; line-height: 1.6;
+}
+.modal-close {
+  position: absolute; top: -14px; right: -14px;
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: rgba(44,31,21,0.7); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(245,230,211,0.7);
+  transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(44,31,21,0.9); }
+.modal-outer { position: relative; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .timeline-line { display: none; }
+  .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; gap: 1rem; }
+  .t-node { display: none; }
+  .hero-top-label { display: none; }
+  .hero-nav-dots { display: none; }
+  .big-quote { font-size: 10rem; }
+  .gallery-grid { gap: 1.5rem; }
+  .polaroid { width: 160px; }
+  .pol-caption { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Grain -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- Custom cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Scroll progress -->
+<div id="scroll-bar"></div>
+
+<!-- Loading Screen -->
+<div id="loading">
+  <div class="loading-inner">
+    <div class="loading-label">class of</div>
+    <div class="loading-year">2026</div>
+    <div class="loading-divider" id="load-divider"></div>
+    <div class="loading-name">Farha Tarek</div>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar-fill" id="load-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal-backdrop">
+  <div class="modal-outer">
+    <div class="modal-card">
+      <div class="modal-strip"></div>
+      <div class="modal-body">
+        <div class="modal-mic" id="modal-mic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6F4E37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <div class="modal-label">voice note</div>
+        <div class="modal-title">One last thing...</div>
+        <div class="modal-from">from someone who believes in you</div>
+        <div class="waveform-box">
+          <div class="waveform" id="waveform"></div>
+          <div class="progress-row">
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="time-row">
+              <span class="time-label" id="time-current">0:00</span>
+              <span class="time-label">2:30</span>
+            </div>
+          </div>
+        </div>
+        <button class="play-btn" id="play-btn" onclick="togglePlay()">
+          <div class="play-btn-glow"></div>
+          <span id="play-icon">▶</span>
+          <span id="play-text">play message</span>
+        </button>
+        <div class="modal-note">
+          Replace with real audio in <code>/public/audio/message.mp3</code>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeModal()">
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M1 1l12 12M13 1L1 13"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section id="hero">
+  <!-- Particles -->
+  <div class="particle" style="width:280px;height:280px;left:8%;top:12%;--dur:9s;--del:0s;"></div>
+  <div class="particle" style="width:200px;height:200px;left:72%;top:8%;--dur:12s;--del:1.5s;"></div>
+  <div class="particle" style="width:150px;height:150px;left:78%;top:62%;--dur:8s;--del:0.7s;"></div>
+  <div class="particle" style="width:220px;height:220px;left:3%;top:68%;--dur:11s;--del:2s;"></div>
+  <div class="particle" style="width:100px;height:100px;left:48%;top:4%;--dur:7s;--del:0.3s;"></div>
+
+  <div class="hero-top-label">Mass Communication · 2026</div>
+
+  <nav class="hero-nav-dots" aria-label="Section navigation">
+    <a href="#hero" title="Hero"></a>
+    <a href="#journey" title="Journey"></a>
+    <a href="#message" title="Message"></a>
+    <a href="#gallery" title="Gallery"></a>
+    <a href="#moment" title="Moment"></a>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">A story worth telling</span>
+      <div class="eyebrow-line"></div>
+    </div>
+
+    <h1 class="hero-headline">
+      <div class="line"><span>2026...</span></div>
+      <div class="line"><span>wasn't just your graduation year.</span></div>
+      <div class="line"><span>it was the year you became</span></div>
+      <div class="line"><span class="text-gradient">everything beautiful.</span></div>
+    </h1>
+
+    <p class="hero-sub">for Farha Tarek</p>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-label">scroll</span>
+  </div>
+
+  <!-- Decorative coffee ring -->
+  <div style="position:absolute;bottom:0;right:0;width:220px;height:220px;border-radius:50%;border:70px solid rgba(111,78,55,0.04);transform:translate(35%,35%);pointer-events:none;"></div>
+</section>
+
+<!-- ═══════════════════════════════ JOURNEY ═══════════════════════════════ -->
+<section id="journey">
+  <div class="section-header reveal">
+    <p class="section-label">four years</p>
+    <h2 class="section-title">The Journey</h2>
+    <p style="font-family:'Poppins',sans-serif;font-size:13px;color:rgba(30,30,30,0.38);margin-top:0.8rem;">Every chapter that built you into who you are today.</p>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-item">
+      <div class="t-card t-card-1 reveal-left">
+        <div class="t-badge"><span>Year 1</span><span>☕</span></div>
+        <div class="t-title">First Lecture</div>
+        <div class="t-sub">The beginning of something golden</div>
+        <div class="t-desc">The nerves, the excitement, the notebook that felt too blank to fill. You walked in not knowing how much you'd grow.</div>
+      </div>
+      <div class="t-node"><div class="t-dot"></div></div>
+      <div style="flex:1;display:none;"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="t-card t-card-2 reveal-right">
+        <div class="t-badge"><span>Year 2</span><span>🌙</span></div>
+        <div class="t-title">Sleepless Projects</div>
+        <div class="t-sub">When 3am became your office</div>
+        <div class="t-desc">Coffee cups stacked, screens glowing at midnight. Every all-nighter was a love letter to your craft.</div>
+      </div>
+      <div class="t-node"><div class="t-dot"></div></div>
+      <div style="flex:1;display:none;"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="t-card t-card-3 reveal-left">
+        <div class="t-badge"><span>Year 3</span><span>🎬</span></div>
+        <div class="t-title">Camera & Edits</div>
+        <div class="t-sub">Finding your eye</div>
+        <div class="t-desc">You learned to tell stories through a lens. Frame by frame, you found a language that was entirely yours.</div>
+      </div>
+      <div class="t-node"><div class="t-dot"></div></div>
+      <div style="flex:1;display:none;"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="t-card t-card-4 reveal-right">
+        <div class="t-badge"><span>Year 4</span><span>🌧️</span></div>
+        <div class="t-title">Stress & Breakdowns</div>
+        <div class="t-sub">The chapters you almost didn't survive</div>
+        <div class="t-desc">But you did. And those broken moments — they're why the light looks so much warmer now.</div>
+      </div>
+      <div class="t-node"><div class="t-dot"></div></div>
+      <div style="flex:1;display:none;"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="t-card t-card-5 reveal-left">
+        <div class="t-badge"><span>2026</span><span>🎓</span></div>
+        <div class="t-title">Graduation</div>
+        <div class="t-sub">The ending that's a beginning</div>
+        <div class="t-desc">You made it. Every quiet struggle, every doubt, every late-night breakdown led exactly here.</div>
+      </div>
+      <div class="t-node"><div class="t-dot final"></div></div>
+      <div style="flex:1;display:none;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ MESSAGE ═══════════════════════════════ -->
+<section id="message">
+  <div class="big-quote" aria-hidden="true">"</div>
+  <div class="msg-wrap" id="msg-wrap">
+    <div class="msg-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">a quiet letter</span>
+    </div>
+    <div id="msg-lines"></div>
+    <div class="msg-signature" id="msg-sig">
+      <div class="sig-line"></div>
+      <div class="sig-with">with love,</div>
+      <div class="sig-name">always yours ✦</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ GALLERY ═══════════════════════════════ -->
+<section id="gallery">
+  <div class="section-header reveal">
+    <p class="section-label">captured moments</p>
+    <h2 class="section-title">The Gallery</h2>
+    <p style="font-family:'Poppins',sans-serif;font-size:13px;color:rgba(30,30,30,0.38);margin-top:0.8rem;">Frames from four years of beautiful chaos.</p>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="polaroid pol-1 reveal">
+      <div class="pol-img-wrap">
+        <div class="pol-grain"></div>
+        <img class="pol-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=75" alt="the beginning" loading="lazy" />
+      </div>
+      <div class="pol-caption">the beginning</div>
+      <div class="pol-date">Sept 2022</div>
+    </div>
+    <div class="polaroid pol-2 reveal" style="transition-delay:0.1s">
+      <div class="pol-img-wrap">
+        <div class="pol-grain"></div>
+        <img class="pol-img" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=75" alt="late nights" loading="lazy" />
+      </div>
+      <div class="pol-caption">late nights</div>
+      <div class="pol-date">Nov 2022</div>
+    </div>
+    <div class="polaroid pol-3 reveal" style="transition-delay:0.2s">
+      <div class="pol-img-wrap">
+        <div class="pol-grain"></div>
+        <img class="pol-img" src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=400&q=75" alt="words & pages" loading="lazy" />
+      </div>
+      <div class="pol-caption">words & pages</div>
+      <div class="pol-date">Feb 2023</div>
+    </div>
+    <div class="polaroid pol-4 reveal" style="transition-delay:0.15s">
+      <div class="pol-img-wrap">
+        <div class="pol-grain"></div>
+        <img class="pol-img" src="https://images.unsplash.com/photo-1500099817043-86d46000d58f?w=400&q=75" alt="golden hour" loading="lazy" />
+      </div>
+      <div class="pol-caption">golden hour study</div>
+      <div class="pol-date">Mar 2024</div>
+    </div>
+    <div class="polaroid pol-5 reveal" style="transition-delay:0.25s">
+      <div class="pol-img-wrap">
+        <div class="pol-grain"></div>
+        <img class="pol-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=75" alt="behind the lens" loading="lazy" />
+      </div>
+      <div class="pol-caption">behind the lens</div>
+      <div class="pol-date">Oct 2023</div>
+    </div>
+    <div class="polaroid pol-6 reveal" style="transition-delay:0.3s">
+      <div class="pol-img-wrap">
+        <div class="pol-grain"></div>
+        <img class="pol-img" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&q=75" alt="we made it" loading="lazy" />
+      </div>
+      <div class="pol-caption">we made it ✦</div>
+      <div class="pol-date">May 2026</div>
+    </div>
+  </div>
+  <div class="gallery-footer reveal">every photo holds a whole world</div>
+</section>
+
+<!-- ═══════════════════════════════ GRADUATION MOMENT ═══════════════════════════════ -->
+<section id="moment">
+  <div class="vignette-overlay"></div>
+
+  <!-- Sparkles -->
+  <div class="sparkle" style="left:10%;top:22%;--dur:5s;--del:0s;">✦</div>
+  <div class="sparkle" style="left:22%;top:65%;--dur:7s;--del:0.5s;">✦</div>
+  <div class="sparkle" style="left:82%;top:18%;--dur:6s;--del:1s;">✦</div>
+  <div class="sparkle" style="left:75%;top:72%;--dur:8s;--del:0.3s;">✦</div>
+  <div class="sparkle" style="left:50%;top:10%;--dur:5.5s;--del:1.5s;">✦</div>
+  <div class="sparkle" style="left:38%;top:85%;--dur:9s;--del:0.8s;">✦</div>
+  <div class="sparkle" style="left:90%;top:48%;--dur:6.5s;--del:0.2s;">✦</div>
+  <div class="sparkle" style="left:5%;top:50%;--dur:7.5s;--del:1.2s;">✦</div>
+
+  <div class="moment-content">
+    <div class="moment-faculty reveal">
+      <div class="moment-fac-line"></div>
+      Faculty of Mass Communication
+      <div class="moment-fac-line"></div>
+    </div>
+    <div class="moment-name reveal" style="transition-delay:0.15s">Farha Tarek</div>
+    <div class="moment-class reveal" style="transition-delay:0.25s">Class of 2026</div>
+    <div class="moment-divider reveal" style="transition-delay:0.35s"></div>
+    <div class="moment-line1 reveal" style="transition-delay:0.45s">You didn't just graduate...</div>
+    <div class="moment-line2 reveal" style="transition-delay:0.6s">you became a story worth telling.</div>
+    <a href="#voice" class="moment-cta reveal" style="transition-delay:0.75s">
+      there's one more thing
+      <div class="moment-cta-dot"></div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ VOICE ═══════════════════════════════ -->
+<section id="voice">
+  <div class="voice-glow"></div>
+  <div class="voice-content">
+    <div class="msg-eyebrow reveal" style="justify-content:center;margin-bottom:3rem;">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">for your ears only</span>
+      <div class="eyebrow-line"></div>
+    </div>
+    <h2 class="voice-heading reveal">Before you go...</h2>
+    <p class="voice-sub reveal" style="transition-delay:0.1s">
+      There's a voice note waiting for you.<br/>
+      Something I couldn't put into words.
+    </p>
+    <button class="voice-btn reveal" style="transition-delay:0.2s" onclick="openModal()">
+      <div class="voice-btn-dot"></div>
+      One last thing...
+    </button>
+    <div class="voice-hint reveal" style="transition-delay:0.35s">press play when you're ready ♡</div>
+  </div>
+  <div class="voice-footer">Farha Tarek · Mass Communication · 2026 · ✦</div>
+</section>
+
+<script>
+/* ════════════════════════════════
+   LOADING SCREEN
+════════════════════════════════ */
+(function () {
+  const fill = document.getElementById('load-fill')
+  const divider = document.getElementById('load-divider')
+  const loading = document.getElementById('loading')
+  let progress = 0
+  divider.style.width = '80px'
+
+  const interval = setInterval(() => {
+    progress += Math.random() * 18 + 4
+    fill.style.width = Math.min(progress, 100) + '%'
+    if (progress >= 100) {
+      clearInterval(interval)
+      setTimeout(() => {
+        loading.classList.add('fade-out')
+        setTimeout(() => loading.remove(), 900)
+      }, 350)
+    }
+  }, 110)
+})()
+
+/* ════════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════════ */
+const dot = document.getElementById('cursor-dot')
+const ring = document.getElementById('cursor-ring')
+let mx = 0, my = 0, rx = 0, ry = 0
+
+window.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px'
+})
+window.addEventListener('mouseover', e => {
+  const t = e.target
+  if (t.tagName === 'A' || t.tagName === 'BUTTON' || t.closest('a') || t.closest('button')) {
+    ring.classList.add('big')
+  } else {
+    ring.classList.remove('big')
+  }
+});
+(function ringAnim() {
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px'
+  requestAnimationFrame(ringAnim)
+})()
+
+/* ════════════════════════════════
+   SCROLL PROGRESS
+════════════════════════════════ */
+const bar = document.getElementById('scroll-bar')
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight
+  bar.style.width = (window.scrollY / total * 100) + '%'
+}, { passive: true })
+
+/* ════════════════════════════════
+   INTERSECTION OBSERVER — REVEALS
+════════════════════════════════ */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target) }
+  })
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' })
+revealEls.forEach(el => obs.observe(el))
+
+/* ════════════════════════════════
+   TYPEWRITER — MESSAGE SECTION
+════════════════════════════════ */
+const messages = [
+  { text: 'I know how hard you worked.', cls: '', pause: 1100 },
+  { text: 'The nights no one saw.', cls: '', pause: 900 },
+  { text: 'The drafts you scrapped at 2am.', cls: '', pause: 1000 },
+  { text: 'The doubt that whispered — maybe not.', cls: '', pause: 1300 },
+  { text: '', cls: 'msg-gap', pause: 500 },
+  { text: 'But you kept going.', cls: 'emphasis', pause: 900 },
+  { text: 'Quietly. Beautifully. Stubbornly.', cls: 'emphasis', pause: 1100 },
+  { text: '', cls: 'msg-gap', pause: 500 },
+  { text: "And I wish you could see yourself", cls: '', pause: 800 },
+  { text: 'the way I do.', cls: '', pause: 1400 },
+  { text: '', cls: 'msg-gap', pause: 400 },
+  { text: "Because from where I'm standing...", cls: '', pause: 900 },
+  { text: 'you\'ve always been extraordinary.', cls: 'italic-em', pause: 2000 },
+]
+const msgContainer = document.getElementById('msg-lines')
+const msgSig = document.getElementById('msg-sig')
+let msgStarted = false, lineIndex = 0
+
+function typeNextLine() {
+  if (lineIndex >= messages.length) { msgSig.classList.add('show'); return }
+  const item = messages[lineIndex]
+  lineIndex++
+  if (!item.text) {
+    const gap = document.createElement('div'); gap.className = 'msg-gap'
+    msgContainer.appendChild(gap)
+    setTimeout(typeNextLine, item.pause)
+    return
+  }
+  const div = document.createElement('div')
+  div.className = 'msg-line ' + (item.cls || '')
+  div.style.opacity = '0'
+  div.style.transform = 'translateY(8px)'
+  div.style.transition = 'opacity 0.5s ease, transform 0.5s ease'
+  msgContainer.appendChild(div)
+  requestAnimationFrame(() => {
+    div.style.opacity = '1'; div.style.transform = 'translateY(0)'
+  })
+  let charIndex = 0
+  const cursor = document.createElement('span'); cursor.className = 'cursor-blink'
+  div.appendChild(cursor)
+  const typer = setInterval(() => {
+    charIndex++
+    div.textContent = item.text.slice(0, charIndex)
+    div.appendChild(cursor)
+    if (charIndex >= item.text.length) {
+      clearInterval(typer)
+      cursor.remove()
+      setTimeout(typeNextLine, item.pause)
+    }
+  }, 36)
+}
+
+const msgObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !msgStarted) {
+    msgStarted = true
+    setTimeout(typeNextLine, 700)
+    msgObs.disconnect()
+  }
+}, { threshold: 0.3 })
+msgObs.observe(document.getElementById('message'))
+
+/* ════════════════════════════════
+   WAVEFORM SETUP
+════════════════════════════════ */
+const waveform = document.getElementById('waveform')
+const BARS = 28
+const bars = []
+for (let i = 0; i < BARS; i++) {
+  const b = document.createElement('div'); b.className = 'w-bar'; waveform.appendChild(b); bars.push(b)
+}
+let waveInterval = null
+
+function startWave() {
+  waveInterval = setInterval(() => {
+    bars.forEach(b => {
+      b.style.height = (Math.random() * 28 + 4) + 'px'
+    })
+  }, 120)
+}
+function stopWave() {
+  clearInterval(waveInterval)
+  bars.forEach(b => b.style.height = '4px')
+}
+
+/* ════════════════════════════════
+   VOICE MODAL & PLAYER
+════════════════════════════════ */
+let playing = false, progress2 = 0, playTimer = null, started = false
+
+function openModal() {
+  document.getElementById('modal-backdrop').classList.add('open')
+}
+function closeModal() {
+  pausePlayer()
+  document.getElementById('modal-backdrop').classList.remove('open')
+}
+document.getElementById('modal-backdrop').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-backdrop')) closeModal()
+})
+
+function togglePlay() {
+  if (playing) pausePlayer(); else startPlayer()
+}
+
+function startPlayer() {
+  playing = true; started = true
+  document.getElementById('play-btn').classList.add('playing')
+  document.getElementById('play-icon').textContent = '⏸'
+  document.getElementById('play-text').textContent = 'pause'
+  document.getElementById('modal-mic').classList.add('playing')
+  startWave()
+  playTimer = setInterval(() => {
+    progress2 += 100 / (150 / 0.06)
+    if (progress2 >= 100) { progress2 = 100; pausePlayer(); document.getElementById('play-icon').textContent = '↺'; document.getElementById('play-text').textContent = 'listen again'; return }
+    document.getElementById('progress-fill').style.width = progress2 + '%'
+    const s = Math.floor(progress2 / 100 * 150)
+    document.getElementById('time-current').textContent = Math.floor(s/60) + ':' + String(s%60).padStart(2,'0')
+  }, 60)
+}
+function pausePlayer() {
+  playing = false
+  clearInterval(playTimer)
+  document.getElementById('play-btn').classList.remove('playing')
+  document.getElementById('play-icon').textContent = '▶'
+  document.getElementById('play-text').textContent = started ? 'resume' : 'play message'
+  document.getElementById('modal-mic').classList.remove('playing')
+  stopWave()
+}
+
+/* ════════════════════════════════
+   SMOOTH SCROLL PARALLAX (hero)
+════════════════════════════════ */
+const heroParticles = document.querySelectorAll('#hero .particle')
+window.addEventListener('scroll', () => {
+  const y = window.scrollY
+  heroParticles.forEach(p => { p.style.transform += '' })
+  document.querySelector('#hero .hero-content').style.transform = `translateY(${y * 0.25}px)`
+}, { passive: true })
+</script>
+</body>
+</html>
